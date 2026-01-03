@@ -1,0 +1,30 @@
+<div class="mb-4 mt-5 pt-1 pb-4 list-courses">
+  <div class="bar-title-list-courses"></div>
+  <h4 class="title-list-courses">Quem viu este curso, também viu</h4>
+</div>
+
+<div class="row">
+  {% for course in courses %}
+    <div class="col-md-4 mb-4">
+      <div class="card mb-4 shadow border-light h-100">
+        {% if course.image %}
+          <a href="{% url 'course' slug=course.slug %}"><img src="{{ course.image.url }}" alt="{{ course.name }}" class="card-img-top" /></a>
+        {% endif %}
+        <div class="card-body text-center">
+          <h5 class="card-title">{{ course.name }}</h5>
+          <p class="card-text">
+            <span class="text-muted">
+              <del>
+                <small>R$ {{ course.original_price }}</small>
+              </del>
+            </span>
+            <span class="text-success">R$ {{ course.discounted_price }}</span>
+          </p>
+          <a href="{% url 'course' slug=course.slug %}" class="btn btn-primary btn-sm">Mais Detalhes</a>
+        </div>
+      </div>
+    </div>
+  {% empty %}
+    <div class="alert alert-warning text-center">Nenhum curso encontrado.</div>
+  {% endfor %}
+</div>

@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br" class="h-100">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="{% static 'bootstrap/css/bootstrap.min.css' %}" rel="stylesheet" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <link href="{% static 'css/style_site.css' %}" rel="stylesheet" />
+
+    <link rel="icon" href="{% static 'favicon/favicon.ico' %}" type="image/x-icon">
+
+    <title>Celke</title>
+  </head>
+
+  <body class="d-flex flex-column h-100">
+    <!-- Incluir o menu -->
+    {% include 'courses/menu.html' %}
+
+    <div class="container flex-grow-1 d-flex flex-column">
+
+      {% block content %}
+
+      {% endblock %}
+    </div>
+
+    <!-- Incluir o rodapé -->
+    {% include 'courses/rodape.html' %}
+
+    <script src="{% static 'bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  </body>
+</html>

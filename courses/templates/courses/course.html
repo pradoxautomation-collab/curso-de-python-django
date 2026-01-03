@@ -1,0 +1,38 @@
+{% extends 'courses/base.html' %}
+
+{% block content %}
+  <div class="container mt-5">
+    <div class="mb-2 pt-1 pb-4 list-courses">
+      <div class="bar-title-list-courses"></div>
+      <h4 class="title-list-courses">Curso</h4>
+    </div>
+
+    <div class="row m-1">
+      <div class="row g-0 border-light rounded overflow-hidden flex-md-row mb-4 shadow h-md-250 position-relative">
+        <div class="col-12 col-md-8">
+          {% if course.image %}
+            <img src="{{ course.image.url }}" class="img-fluid" alt="{{ course.name }}" />
+          {% endif %}
+        </div>
+        <div class="col-12 col-md-4 p-4 d-flex flex-column position-static">
+          <h3 class="d-inline-block mb-2 title-list-courses">{{ course.name }}</h3>
+
+          <div class="mb-2 text-muted">
+            <del>R$ {{ course.original_price }}</del>
+          </div>
+
+          <h3 class="mb-4 text-success">R$ {{ course.discounted_price }}</h3>
+
+          <a href="https://pay.hotmart.com/W96848120K?off=pux06tk6" class="btn btn-primary">Reservar Agora</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="row shadow p-4 mb-4 m-1">
+      <p>{{ course.description|safe }}</p>
+    </div>
+
+    <!-- Incluir a lista de cursos de sugestão -->
+    {% include 'courses/course_suggestions.html' %}
+  </div>
+{% endblock %}
